@@ -47,11 +47,11 @@ npx playwright install
 ## Usage
 
 1. **Launch Chrome with Remote Debugging**  
-Make sure Chrome is closed, then run:
+    Make sure Chrome is closed, then run:
 ```bash
 chrome --remote-debugging-port=9222
 ```
-Replace `chrome` with the appropriate path to your Chrome executable if needed.
+    Replace `chrome` with the appropriate path to your Chrome executable if needed.
 
 2. **Log into ZipRecruiter**  
     In that same Chrome instance, go to [ZipRecruiter](https://www.ziprecruiter.com) and manually log in.
@@ -63,9 +63,10 @@ Replace `chrome` with the appropriate path to your Chrome executable if needed.
      - **CSS highlight styles**, etc.
 
 4. **Run the Script**  
-   ```bash
+```bash
 go run main.go
 ```
+
    The script connects to your Chrome instance on port `9222` and begins processing job cards automatically.
 
 ## How It Works
