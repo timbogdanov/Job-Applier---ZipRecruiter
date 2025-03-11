@@ -51,7 +51,7 @@ npx playwright install
 ```bash
 chrome --remote-debugging-port=9222
 ```
-    Replace `chrome` with the appropriate path to your Chrome executable if needed.
+Replace `chrome` with the appropriate path to your Chrome executable if needed.
 
 2. **Log into ZipRecruiter**  
     In that same Chrome instance, go to [ZipRecruiter](https://www.ziprecruiter.com) and manually log in.
