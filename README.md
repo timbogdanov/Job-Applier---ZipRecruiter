@@ -27,39 +27,34 @@ This Go-based automation script streamlines applying to jobs on [ZipRecruiter](h
 ## Installation
 
 1. **Clone the Repository**  
-   ```bash
+```bash
 git clone git@github.com:timbogdanov/Job-Applier---ZipRecruiter.git
 cd Job-Applier---ZipRecruiter
 ```
 
-
-
-
-
-
 2. **Install Dependencies**  
-   Make sure your Go module is initialized, then install missing packages:
-   ```bash
+Make sure your Go module is initialized, then install missing packages:
+```bash
 go mod tidy
 ```
 
 3. **Install Playwright Browsers (Optional)**  
-   If you haven’t installed them globally, you may need:
-   ```bash
+If you haven’t installed them globally, you may need:
+```bash
 npx playwright install
 ```
 
 ## Usage
 
 1. **Launch Chrome with Remote Debugging**  
-   Make sure Chrome is closed, then run:
-   ```bash
+Make sure Chrome is closed, then run:
+```bash
 chrome --remote-debugging-port=9222
 ```
-   Replace `chrome` with the appropriate path to your Chrome executable if needed.
+Replace `chrome` with the appropriate path to your Chrome executable if needed.
 
 2. **Log into ZipRecruiter**  
-   In that same Chrome instance, go to [ZipRecruiter](https://www.ziprecruiter.com) and manually log in.
+    In that same Chrome instance, go to [ZipRecruiter](https://www.ziprecruiter.com) and manually log in.
 
 3. **Adjust Script Settings (Optional)**  
    - Open `main.go` and modify:
