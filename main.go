@@ -175,31 +175,17 @@ func main() {
 						log.Printf("Closed the info modal.")
 					}
 					// Wait briefly to allow any subsequent modal to appear
-					time.Sleep(1 * time.Second)
+					time.Sleep(3 * time.Second)
 
 					// Check for the confirmation modal that appears after closing the info modal
-					confirmModal := page.Locator("div[aria-label='Are you sure you want to cancel?']")
-					// We use IsVisible() on the locator (it returns a bool) so we check if it's visible
-					if visible, _ := confirmModal.IsVisible(); visible {
-						cancelButton := confirmModal.Locator("button:has-text('Cancel Application')").First()
-						cancelCount, err := cancelButton.Count()
-						if err == nil && cancelCount > 0 {
-							log.Printf("Confirmation modal detected. Clicking 'Cancel Application' to close it.")
-							err = cancelButton.Click(playwright.LocatorClickOptions{
-								Force:   playwright.Bool(true),
-								Timeout: playwright.Float(5000),
-							})
-							if err != nil {
-								log.Printf("Failed to click 'Cancel Application' button: %v", err)
-							} else {
-								log.Printf("Closed the confirmation modal.")
-							}
-						} else {
-							log.Printf("Confirmation modal did not contain a 'Cancel Application' button.")
-						}
-					} else {
-						log.Printf("No confirmation modal detected after closing the info modal.")
-					}
+					cancelButton := page.GetByRole("button").Filter(playwright.LocatorFilterOptions{
+						HasText: "Cancel Application",
+					})
+
+					cancelButton.Click(playwright.LocatorClickOptions{
+						Force:   playwright.Bool(true),
+						Timeout: playwright.Float(5000),
+					})
 				} else {
 					log.Printf("No info modal appeared after clicking '1-Click Apply'.")
 				}
