@@ -32,6 +32,11 @@ git clone git@github.com:timbogdanov/Job-Applier---ZipRecruiter.git
 cd Job-Applier---ZipRecruiter
 ```
 
+
+
+
+
+
 2. **Install Dependencies**  
    Make sure your Go module is initialized, then install missing packages:
    ```bash
@@ -103,4 +108,3 @@ Pull requests and issue reports are welcome! If you have suggestions, bug fixes,
 ## License
 
 This project is licensed under the **MIT License**.
-```
