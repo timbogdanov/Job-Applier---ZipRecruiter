@@ -1,4 +1,3 @@
-```markdown
 # Job Applier – ZipRecruiter
 
 This Go-based automation script streamlines applying to jobs on [ZipRecruiter](https://www.ziprecruiter.com) by simulating human-like interactions. It navigates through job listings, highlights key elements, clicks the "1-Click Apply" button where available, handles pop-up modals, and moves on to the next listing automatically.
