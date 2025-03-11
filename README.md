@@ -1,94 +1,107 @@
-ZipRecruiter Job Apply Automation
+```markdown
+# Job Applier – ZipRecruiter
 
-This automation script, written in Go with Playwright, automatically processes job listings on ZipRecruiter by applying using the "1-Click Apply" feature. It highlights elements to provide visual feedback, handles potential modal pop-ups gracefully, and simulates human-like interactions to enhance stability.
+This Go-based automation script streamlines applying to jobs on [ZipRecruiter](https://www.ziprecruiter.com) by simulating human-like interactions. It navigates through job listings, highlights key elements, clicks the "1-Click Apply" button where available, handles pop-up modals, and moves on to the next listing automatically.
 
-Prerequisites
+## Features
 
-Go (version 1.16 or higher)
+- **Automated Navigation**  
+  Iterates through job cards on ZipRecruiter, highlighting each processed card.
 
-Google Chrome browser
+- **1-Click Apply Automation**  
+  Locates the "1-Click Apply" button, applies with a force click if needed, and waits for any resulting modals to appear.
 
-Playwright Go library
+- **Modal Handling**  
+  Closes additional information or confirmation pop-ups automatically to ensure seamless progression.
 
-Installation
+- **Human-Like Behavior**  
+  Uses random delays and slight mouse movements to mimic human interaction and reduce the chance of detection.
 
-Clone the repository:
+## Prerequisites
 
-git clone https://github.com/your-username/ziprecruiter-automation.git
-cd ziprecruiter-automation
+1. **Go (1.16 or newer)**
+2. **Google Chrome**  
+   Must be launched with a remote debugging port.
+3. **Playwright for Go**  
+   Community fork: [github.com/playwright-community/playwright-go](https://github.com/playwright-community/playwright-go)
 
-Install Dependencies:
+## Installation
 
+1. **Clone the Repository**  
+   ```bash
+git clone git@github.com:timbogdanov/Job-Applier---ZipRecruiter.git
+cd Job-Applier---ZipRecruiter
+```
+
+2. **Install Dependencies**  
+   Make sure your Go module is initialized, then install missing packages:
+   ```bash
 go mod tidy
+```
 
-Install Playwright Browsers (if you haven't already):
-
+3. **Install Playwright Browsers (Optional)**  
+   If you haven’t installed them globally, you may need:
+   ```bash
 npx playwright install
+```
 
-Prepare Chrome for Automation
+## Usage
 
-Start Chrome with remote debugging enabled:
-
+1. **Launch Chrome with Remote Debugging**  
+   Make sure Chrome is closed, then run:
+   ```bash
 chrome --remote-debugging-port=9222
+```
+   Replace `chrome` with the appropriate path to your Chrome executable if needed.
 
-Manually navigate to ZipRecruiter and log into your account.
+2. **Log into ZipRecruiter**  
+   In that same Chrome instance, go to [ZipRecruiter](https://www.ziprecruiter.com) and manually log in.
 
-Before Running the Script
+3. **Adjust Script Settings (Optional)**  
+   - Open `main.go` and modify:
+     - The **search URL** or job search criteria.
+     - **Sleep intervals** if you want different random delays.
+     - **CSS highlight styles**, etc.
 
-Open Chrome with remote debugging on port 9222:
-
-chrome --remote-debugging-port=9222
-
-Navigate manually to ZipRecruiter and log in.
-
-Verify you're logged in and are able to browse job listings.
-
-Running the Automation Script
-
-Once logged in and the Chrome instance is active, run:
-
+4. **Run the Script**  
+   ```bash
 go run main.go
+```
+   The script connects to your Chrome instance on port `9222` and begins processing job cards automatically.
 
-Workflow
+## How It Works
 
-The script navigates through each job card, highlights each processed job card in #39FF50.
+1. **Navigates to the Provided URL**  
+   The script visits the ZipRecruiter job search page specified in `main.go`.
 
-The right pane showing job details is highlighted with a background color of #D3FFD9 and a border of #39FF50.
+2. **Finds Job Cards**  
+   It highlights each job card, clicks it, and opens details in the right pane.
 
-It searches for the "1-Click Apply" button and highlights it in #39FF50.
+3. **Checks for “1-Click Apply”**  
+   If the button is found, the script highlights it, clicks it, then waits briefly.
 
-Upon clicking the button, it waits briefly and automatically closes any modals that request additional info, allowing continuous unattended processing.
+4. **Closes Pop-Ups**  
+   If there is an info modal requesting additional data, or a "cancel application" confirmation, the script automatically closes them.
 
-Handling Modals
+5. **Pagination**  
+   Once all visible job cards are processed, it clicks the "Next Page" link and continues until there are no more pages.
 
-If a modal requesting more information appears after clicking apply, the script automatically closes it.
+## Troubleshooting
 
-If a confirmation modal appears afterward (e.g., "Are you sure you want to cancel?"), it automatically confirms cancellation and continues.
+- **Not Connecting to Chrome**  
+  Verify Chrome is running with `--remote-debugging-port=9222`.
+- **Login Issues**  
+  Make sure you’re logged into ZipRecruiter in that same instance of Chrome.
+- **Selector Changes**  
+  ZipRecruiter’s site may update. If elements can’t be found, adjust the selectors in `main.go`.
+- **Timeouts**  
+  Increase timeouts if the script fails due to slow network or site loading.
 
-Running the Script
+## Contributing
 
-Execute the automation by running:
+Pull requests and issue reports are welcome! If you have suggestions, bug fixes, or new ideas, feel free to open an issue or submit a PR.
 
-go run main.go
+## License
 
-Configuration and Adjustments
-
-To change the job search URL or the search criteria, update the URL inside main.go.
-
-Adjust random sleep durations within the script to simulate different human-like interaction timings if necessary.
-
-Troubleshooting
-
-Remote debugging not working: Ensure Chrome is correctly started with --remote-debugging-port=9222.
-
-Not logged in: Make sure you're logged into ZipRecruiter before running the script.
-
-Selectors not found: Verify that the selectors used in the script still match ZipRecruiter’s current HTML structure.
-
-Contributions
-
-Feel free to open issues or submit pull requests if you have improvements or find issues with the script.
-
-License
-
-MIT License.
+This project is licensed under the **MIT License**.
+```
